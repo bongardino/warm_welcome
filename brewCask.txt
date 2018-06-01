@@ -1,0 +1,41 @@
+# synergy
+1password-cli
+adobe-creative-cloud
+bartender
+bbedit
+bettertouchtool
+# dash
+dialpad
+disk-inventory-x
+docker
+dropbox
+firefox
+fluid
+google-chrome
+handbrake
+iina
+inssider
+istat-menus
+iterm2
+jumpcut
+knockknock
+launchcontrol
+little-snitch
+micro-snitch
+omnidisksweeper
+pacifist
+postman
+rocket
+sequel-pro
+slack
+spotify
+stay
+steam
+sublime-text
+the-unarchiver
+# transmission
+# virtualbox
+viscosity
+whatsapp
+# wireshark
+blockblock

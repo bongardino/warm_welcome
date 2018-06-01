@@ -1,0 +1,31 @@
+# ansible
+# docker
+# docker-machine
+# draft
+# go
+# kubernetes-helm
+# sops
+# sopsorific
+# terraform
+
+awscli
+git
+graphviz
+heroku
+htop
+jq
+lynx
+mas
+mtr
+nmap
+perl
+pyenv
+python3
+ripgrep
+shellcheck
+tldr
+trash
+tree
+vault
+vim
+wget
