@@ -5,8 +5,9 @@ bartender
 bbedit
 bettertouchtool
 # dash
+daisydisk
 dialpad
-disk-inventory-x
+# disk-inventory-x
 docker
 dropbox
 firefox
@@ -23,7 +24,7 @@ knockknock
 launchcontrol
 little-snitch
 micro-snitch
-omnidisksweeper
+# omnidisksweeper
 pacifist
 postman
 rocket
