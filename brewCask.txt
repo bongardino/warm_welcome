@@ -12,6 +12,7 @@ dropbox
 firefox
 fluid
 google-chrome
+google-drive-file-stream
 handbrake
 iina
 inssider
