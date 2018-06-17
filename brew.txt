@@ -23,6 +23,7 @@ pyenv
 python3
 ripgrep
 shellcheck
+tccutil
 tldr
 trash
 tree
