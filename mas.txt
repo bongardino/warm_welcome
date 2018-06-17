@@ -4,7 +4,8 @@
 # GIPHY CAPTURE 668208984
 # Helium 1054607607
 # Image2Icon 992115977
-# Microsoft Remote Desktop 715768417, 10 1295203466
+# Microsoft Remote Desktop (old)    715768417
+# Microsoft Remote Desktop 10 1295203466
 # Apple Remote Desktop 409907375
 # Twitter 409789998
 # 1Password 443987910
