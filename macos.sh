@@ -138,9 +138,8 @@ defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-
 ###############################################################################
-# SSD-specific tweaks                                                         #
+echo "SSD-specific tweaks"                                                         #
 ###############################################################################
 
 # Disable hibernation (speeds up entering sleep mode)
@@ -156,7 +155,7 @@ sudo touch /private/var/vm/sleepimage
 sudo chflags uchg /private/var/vm/sleepimage
 
 ###############################################################################
-# Trackpad, mouse, keyboard, Bluetooth accessories, and input                 #
+echo "Trackpad, mouse, keyboard, Bluetooth accessories, and input"                 #
 ###############################################################################
 
 # Trackpad: enable tap to click for this user and for the login screen
@@ -211,7 +210,7 @@ defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 launchctl unload -w /System/Library/LaunchAgents/com.apple.rcd.plist 2> /dev/null
 
 ###############################################################################
-# Screen                                                                      #
+echo "Screen"                                                                      #
 ###############################################################################
 
 # Require password immediately after sleep or screen saver begins
@@ -235,7 +234,7 @@ defaults write NSGlobalDomain AppleFontSmoothing -int 1
 sudo defaults write /Library/Preferences/com.apple.windowserver DisplayResolutionEnabled -bool true
 
 ###############################################################################
-# Finder                                                                      #
+echo "Finder"                                                                      #
 ###############################################################################
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
@@ -350,7 +349,7 @@ defaults write com.apple.finder FXInfoPanesExpanded -dict \
 	Privileges -bool true
 
 ###############################################################################
-# Dock, Dashboard, and hot corners                                            #
+echo "Dock, Dashboard, and hot corners"                                            #
 ###############################################################################
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
@@ -421,9 +420,9 @@ find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -dele
 # sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
 
 # Add a spacer to the left side of the Dock (where the applications are)
-defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 # Add a spacer to the right side of the Dock (where the Trash is)
-defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+# defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Hot corners
 # Possible values:
