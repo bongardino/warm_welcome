@@ -6,6 +6,9 @@
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+# Disable exit on non 0
+set +e
+
 # Ask for the administrator password upfront
 sudo -v
 
@@ -61,10 +64,10 @@ sudo defaults write /Library/Preferences/com.apple.security GKAutoRearm -bool NO
 # Possible values: `WhenScrolling`, `Automatic` and `Always`
 
 # Disable the over-the-top focus ring animation
-defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
+# defaults write NSGlobalDomain NSUseAnimatedFocusRing -bool false
 
 # Increase window resize speed for Cocoa applications
-defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
+# defaults write NSGlobalDomain NSWindowResizeTime -float 0.001
 
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
@@ -88,10 +91,10 @@ defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Display ASCII control characters using caret notation in standard text views
 # Try e.g. `cd /tmp; unidecode "\x{0000}" > cc.txt; open -e cc.txt`
-defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
+# defaults write NSGlobalDomain NSTextShowsControlCharacters -bool true
 
 # Disable Resume system-wide
-defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
+# defaults write com.apple.systempreferences NSQuitAlwaysKeepsWindows -bool false
 
 # Disable automatic termination of inactive apps
 defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
@@ -100,7 +103,7 @@ defaults write NSGlobalDomain NSDisableAutomaticTermination -bool true
 defaults write com.apple.CrashReporter DialogType -string "none"
 
 # Set Help Viewer windows to non-floating mode
-defaults write com.apple.helpviewer DevMode -bool true
+# defaults write com.apple.helpviewer DevMode -bool true
 
 # Fix for the ancient UTF-8 bug in QuickLook (https://mths.be/bbo)
 # Commented out, as this is known to cause problems in various Adobe apps :(
@@ -109,7 +112,7 @@ defaults write com.apple.helpviewer DevMode -bool true
 
 # Reveal IP address, hostname, OS version, etc. when clicking the clock
 # in the login window
-sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
+# sudo defaults write /Library/Preferences/com.apple.loginwindow AdminHostInfo HostName
 
 # Restart automatically if the computer freezes
 # sudo systemsetup -setrestartfreeze on
@@ -187,8 +190,8 @@ defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 defaults write NSGlobalDomain ApplePressAndHoldEnabled -bool false
 
 # Set a blazingly fast keyboard repeat rate
-defaults write NSGlobalDomain KeyRepeat -int 1
-defaults write NSGlobalDomain InitialKeyRepeat -int 15
+# defaults write NSGlobalDomain KeyRepeat -int 1
+# defaults write NSGlobalDomain InitialKeyRepeat -int 15
 
 # Set language and text formats
 # Note: if you’re in the US, replace `EUR` with `USD`, `Centimeters` with
@@ -292,9 +295,9 @@ defaults write com.apple.frameworks.diskimages skip-verify-locked -bool true
 defaults write com.apple.frameworks.diskimages skip-verify-remote -bool true
 
 # Automatically open a new Finder window when a volume is mounted
-# defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
-# defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
-# defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
+defaults write com.apple.frameworks.diskimages auto-open-ro-root -bool true
+defaults write com.apple.frameworks.diskimages auto-open-rw-root -bool true
+defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 
 # Show item info near icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
@@ -397,6 +400,7 @@ defaults write com.apple.dock mru-spaces -bool false
 
 # Remove the auto-hiding Dock delay
 defaults write com.apple.dock autohide-delay -float 0
+
 # Remove the animation when hiding/showing the Dock
 defaults write com.apple.dock autohide-time-modifier -float 0
 
@@ -417,9 +421,9 @@ find "${HOME}/Library/Application Support/Dock" -name "*-*.db" -maxdepth 1 -dele
 # sudo ln -sf "/Applications/Xcode.app/Contents/Developer/Applications/Simulator (Watch).app" "/Applications/Simulator (Watch).app"
 
 # Add a spacer to the left side of the Dock (where the applications are)
-#defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
+defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
 # Add a spacer to the right side of the Dock (where the Trash is)
-#defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
+defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
 # Hot corners
 # Possible values:
@@ -611,7 +615,7 @@ sudo mdutil -E / > /dev/null
 ###############################################################################
 
 # Only use UTF-8 in Terminal.app
-defaults write com.apple.terminal StringEncodings -array 4
+# defaults write com.apple.terminal StringEncodings -array 4
 
 # Use a modified version of the Solarized Dark theme by default in Terminal.app
 # osascript <<EOD
@@ -864,7 +868,6 @@ defaults write com.twitter.twitter-mac ShowFullNames -bool true
 # Hide the app in the background if it’s not the front-most window
 defaults write com.twitter.twitter-mac HideInBackground -bool true
 
-echo "Done. Note that some of these changes require a logout/restart to take effect."
 ###############################################################################
 # Kill affected applications                                                  #
 ###############################################################################
