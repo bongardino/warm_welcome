@@ -1,12 +1,12 @@
-# ansible
-# docker
-# docker-machine
-# draft
-# go
-# kubernetes-helm
-# sops
-# sopsorific
-# terraform
+#ansible
+#docker
+#docker-machine
+#draft
+#go
+#kubernetes-helm
+#sops
+#sopsorific
+#terraform
 
 awscli
 git
