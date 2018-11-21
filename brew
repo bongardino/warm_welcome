@@ -1,5 +1,5 @@
 #ansible
-#docker
+docker
 #docker-machine
 #draft
 #go
@@ -8,6 +8,7 @@
 #sopsorific
 #terraform
 awscli
+figlet
 git
 graphviz
 heroku
@@ -17,7 +18,6 @@ lynx
 mas
 mtr
 nmap
-perl
 pyenv
 python3
 ripgrep

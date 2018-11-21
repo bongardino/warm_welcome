@@ -8,7 +8,7 @@ bettertouchtool
 daisydisk
 dialpad
 #disk-inventory-x
-docker
+#docker
 dropbox
 firefox
 fluid
@@ -31,7 +31,7 @@ rocket
 sequel-pro
 slack
 spotify
-spotify-notifications
+#spotify-notifications
 stay
 steam
 sublime-text
