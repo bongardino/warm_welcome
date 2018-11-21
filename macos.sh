@@ -55,7 +55,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 fi
 
-mas signin --dialog mas@example.com
 
 installer() {
 	cat $1 | while read line
@@ -69,6 +68,7 @@ installer() {
 
 installer brewCask "brew cask"
 installer brew brew
+mas signin --dialog mas@example.com
 installer mas mas
 
 # Disable the sound effects on boot
