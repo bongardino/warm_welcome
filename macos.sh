@@ -2,6 +2,11 @@
 
 # ~/.macos — https://mths.be/macos
 
+#install homebrew and stuff, before sudo
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+$(brew --prefix)/opt/fzf/install
+
 # run with sh -x because Im too lazy to make proper logging
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -16,6 +21,9 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# install pip
+sudo easy_install pip
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -71,7 +79,7 @@ do
 done
 
 # Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 43200
+# sudo pmset -a standbydelay 43200
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -80,6 +88,8 @@ sudo nvram SystemAudioVolume=" "
 echo "Enabling Verbose Boot"
 sudo nvram boot-args="-v"
 
+# set global git ignores to avoid system files
+git config --global core.excludesfile ~/.gitignore_global
 
 # disable Gatekeeper
 # echo "Disabling OS X Gate Keeper"
@@ -218,8 +228,8 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
 # Use scroll gesture with the Ctrl (^) modifier key to zoom
-defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
-defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
+# defaults write com.apple.universalaccess closeViewScrollWheelToggle -bool true
+# defaults write com.apple.universalaccess HIDScrollZoomModifierMask -int 262144
 # Follow the keyboard focus while zoomed in
 # defaults write com.apple.universalaccess closeViewZoomFollowsFocus -bool true
 
@@ -256,7 +266,7 @@ echo "Screen"                                                                   
 # defaults write com.apple.screensaver askForPasswordDelay -int 0
 
 # Save screenshots to the desktop
-defaults write com.apple.screencapture location -string "${HOME}/Desktop"
+# defaults write com.apple.screencapture location -string "${HOME}/Desktop"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
@@ -705,7 +715,7 @@ sudo mdutil -E / > /dev/null
 
 # Enable Secure Keyboard Entry in Terminal.app
 # See: https://security.stackexchange.com/a/47786/8918
-defaults write com.apple.terminal SecureKeyboardEntry -bool true
+# defaults write com.apple.terminal SecureKeyboardEntry -bool true
 
 # Disable the annoying line marks
 # defaults write com.apple.Terminal ShowLineMarks -int 0
