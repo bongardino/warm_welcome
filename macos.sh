@@ -2,6 +2,11 @@
 
 # ~/.macos — https://mths.be/macos
 
+#install homebrew and stuff, before sudo
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
+$(brew --prefix)/opt/fzf/install
+
 # run with sh -x because Im too lazy to make proper logging
 
 # Close any open System Preferences panes, to prevent them from overriding
@@ -16,6 +21,9 @@ sudo -v
 
 # Keep-alive: update existing `sudo` time stamp until `.macos` has finished
 while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
+
+# install pip
+sudo easy_install pip
 
 ###############################################################################
 # General UI/UX                                                               #
@@ -71,7 +79,7 @@ do
 done
 
 # Set standby delay to 24 hours (default is 1 hour)
-sudo pmset -a standbydelay 43200
+# sudo pmset -a standbydelay 43200
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -80,6 +88,8 @@ sudo nvram SystemAudioVolume=" "
 echo "Enabling Verbose Boot"
 sudo nvram boot-args="-v"
 
+# set global git ignores to avoid system files
+git config --global core.excludesfile ~/.gitignore_global
 
 # disable Gatekeeper
 # echo "Disabling OS X Gate Keeper"
