@@ -8,10 +8,13 @@
 
 $(brew --prefix)/opt/fzf/install
 
-
 # Close any open System Preferences panes, to prevent them from overriding
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
+
+# make some dirs
+mkdir ~/src
+mkdir ~/bin
 
 # Disable exit on non 0
 set +e
@@ -52,31 +55,21 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 fi
 
-cat brewCask | while read line
-do
-	if [[ $line != \#* ]]
-	then
-		brew cask install $line;
-	fi
-done
-
-cat brew | while read line
-do
-	if [[ $line != \#* ]]
-	then
-		brew install $line;
-	fi
-done
-
 mas signin --dialog mas@example.com
 
-cat mas | while read line
-do
-	if [[ $line != \#* ]]
-	then
-		mas install $line;
-	fi
-done
+installer() {
+	cat $1 | while read line
+	do
+		if [[ $line != \#* ]]
+		then
+			$2 install $line;
+		fi
+	done
+}
+
+installer brewCask "brew cask"
+installer brew brew
+installer mas mas
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -696,4 +689,6 @@ for app in "Activity Monitor" \
 	killall "${app}" &> /dev/null
 done
 
+# do this last bc it blockblocks things
+brew install blockblock
 echo "Done. Note that some of these changes require a logout/restart to take effect."
