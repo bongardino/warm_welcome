@@ -66,8 +66,8 @@ installer() {
 	done
 }
 
-installer brewCask "brew cask"
 installer brew brew
+installer brewCask 'brew cask'
 mas signin --dialog mas@example.com
 installer mas mas
 
