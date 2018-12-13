@@ -220,24 +220,6 @@ defaults write com.apple.finder OpenWindowForNewRemovableDisk -bool true
 /usr/libexec/PlistBuddy -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true" ~/Library/Preferences/com.apple.finder.plist
 
-    DesktopViewSettings =     {
-        IconViewSettings =         {
-            arrangeBy = none;
-            backgroundColorBlue = 1;
-            backgroundColorGreen = 1;
-            backgroundColorRed = 1;
-            backgroundType = 0;
-            gridOffsetX = 0;
-            gridOffsetY = 0;
-            gridSpacing = 54;
-            iconSize = 44;
-            labelOnBottom = 0;
-            showIconPreview = 1;
-            showItemInfo = 1;
-            textSize = 12;
-            viewOptionsVersion = 1;
-        };
-
 # Show item info to the right of the icons on the desktop, set sizes
 /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:labelOnBottom false" ~/Library/Preferences/com.apple.finder.plist
 /usr/libexec/PlistBuddy -c "Set DesktopViewSettings:IconViewSettings:iconSize 44" ~/Library/Preferences/com.apple.finder.plist
@@ -653,7 +635,7 @@ defaults write org.m0k.transmission RandomPort -bool true
 sudo spctl --master-disable
 
 # do this last bc it blockblocks things
-brew install blockblock
+brew cask install blockblock
 
 
 echo "Done. Note that some of these changes require a logout/restart to take effect."
