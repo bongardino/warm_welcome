@@ -9,6 +9,7 @@ docker
 #terraform
 awscli
 figlet
+fzf
 git bash-completion
 graphviz
 heroku
