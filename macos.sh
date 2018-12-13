@@ -637,5 +637,4 @@ sudo spctl --master-disable
 # do this last bc it blockblocks things
 brew cask install blockblock
 
-
 echo "Done. Note that some of these changes require a logout/restart to take effect."
