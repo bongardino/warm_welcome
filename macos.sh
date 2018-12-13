@@ -44,7 +44,7 @@ sudo easy_install pip
 
 echo ""
 echo "Wipe the dock?  (y/n)"
-read -r response
+read -r dock_response
 if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
 	defaults write com.apple.dock persistent-apps -array
 fi
@@ -635,7 +635,9 @@ defaults write org.m0k.transmission RandomPort -bool true
 sudo spctl --master-disable
 
 # Wipe the Dock
-dockutil --remove all
+if [[ $dock_response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+	dockutil --remove all
+fi
 
 # do this last bc it blockblocks things
 brew cask install blockblock
