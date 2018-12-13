@@ -634,6 +634,9 @@ defaults write org.m0k.transmission RandomPort -bool true
 # Disable Gatekeeper
 sudo spctl --master-disable
 
+# Wipe the Dock
+dockutil --remove all
+
 # do this last bc it blockblocks things
 brew cask install blockblock
 
