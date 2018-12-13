@@ -12,7 +12,7 @@ figlet
 fzf
 git bash-completion
 graphviz
-heroku
+heroku/brew/heroku
 htop
 jq
 lynx
