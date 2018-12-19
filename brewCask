@@ -8,7 +8,7 @@ bettertouchtool
 daisydisk
 dialpad
 #disk-inventory-x
-#docker
+docker
 dropbox
 firefox
 fluid
@@ -18,7 +18,8 @@ handbrake
 iina
 inssider
 istat-menus
-iterm2
+#iterm2
+iterm2-nightly
 ivpn
 #jumpcut
 knockknock
