@@ -15,6 +15,7 @@ git bash-completion
 graphviz
 heroku/brew/heroku
 htop
+ipython
 jq
 lynx
 mas
