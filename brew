@@ -21,6 +21,7 @@ mas
 mtr
 nmap
 pyenv
+pyenv-virtualenv
 python3
 ripgrep
 shellcheck
