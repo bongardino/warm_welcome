@@ -16,13 +16,14 @@ git bash-completion
 graphviz
 heroku/brew/heroku
 htop
+ipython
 jq
 lynx
 mas
 mtr
 nmap
 pyenv
-python3
+pyenv-virtualenv
 ripgrep
 shellcheck
 tccutil
