@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 
 # ~/.macos — https://mths.be/macos
-# run with sh -x because Im too lazy to make proper logging
+
+# Disable exit on non 0, be verbose
+set +e
+set -x
 
 #install homebrew and stuff, before sudo
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -21,9 +24,6 @@ Host *
  UseKeychain yes
  IdentityFile ~/.ssh/id_rsa
 EOM
-
-# Disable exit on non 0
-set +e
 
 # Ask for the administrator password upfront
 sudo -v

@@ -10,6 +10,7 @@ dockutil
 #sopsorific
 #terraform
 awscli
+coreutils
 figlet
 fzf
 git bash-completion
