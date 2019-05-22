@@ -1,7 +1,7 @@
 #ansible
 #aws-okta
 #docker
-dockutil
+#dockutil
 #docker-machine
 #draft
 #go
@@ -9,6 +9,8 @@ dockutil
 #sops
 #sopsorific
 #terraform
+bash
+bash-completion@2
 awscli
 coreutils
 figlet
@@ -32,6 +34,6 @@ tldr
 tmux
 trash
 tree
-vault
+#vault
 vim
 wget

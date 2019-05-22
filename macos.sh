@@ -585,6 +585,11 @@ defaults write org.m0k.transmission RandomPort -bool true
 # Cleanup                                                         #
 ###############################################################################
 
+# set new bash as the default
+sudo echo '/usr/local/bin/bash' >> /etc/shells
+chsh -s /usr/local/bin/bash
+
+
 # Disable Gatekeeper
 sudo spctl --master-disable
 
