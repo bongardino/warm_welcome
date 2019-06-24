@@ -1,10 +1,11 @@
 #ansible
 #aws-okta
+dep
 #docker
 #dockutil
 #docker-machine
 #draft
-#go
+go
 #kubernetes-helm
 #sops
 #sopsorific
