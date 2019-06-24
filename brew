@@ -31,6 +31,7 @@ pyenv-virtualenv
 ripgrep
 shellcheck
 tccutil
+tfenv
 tldr
 tmux
 trash
