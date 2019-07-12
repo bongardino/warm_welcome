@@ -6,34 +6,6 @@
 set +e
 set -x
 
-#install homebrew and stuff, before sudo
-/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-# Close any open System Preferences panes, to prevent them from overriding
-# settings we’re about to change
-osascript -e 'tell application "System Preferences" to quit'
-
-# make some dirs & files
-mkdir ~/src
-mkdir ~/bin
-mkdir ~/.ssh
-
-cat <<EOM > ~/.ssh/config
-Host *
- AddKeysToAgent yes
- UseKeychain yes
- IdentityFile ~/.ssh/id_rsa
-EOM
-
-# Ask for the administrator password upfront
-sudo -v
-
-# Keep-alive: update existing `sudo` time stamp until `.macos` has finished
-while true; do sudo -n true; sleep 60; kill -0 "$$" || exit; done 2>/dev/null &
-
-# install pip
-sudo easy_install pip
-
 ###############################################################################
 # General UI/UX/Installations                                                               #
 ###############################################################################
@@ -42,19 +14,16 @@ sudo easy_install pip
 # This is only really useful when setting up a new Mac, or if you don’t use
 # the Dock to launch apps.
 
-echo ""
-echo "Wipe the dock?  (y/n)"
-read -r dock_response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
+
+clear_previous_line
+if confirm "Wipe the dock?  [y/N]"; then
 	defaults write com.apple.dock persistent-apps -array
 fi
 
 # Set computer name (as done via System Preferences → Sharing)
-echo ""
-echo "set your computer name?  (y/n)"
-read -r response
-if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-  echo "What would you like it to be?"
+clear_previous_line
+if confirm "set your computer name?  [y/N]"; then
+  echo "What name?"
   read COMPUTER_NAME
   sudo scutil --set ComputerName $COMPUTER_NAME
   sudo scutil --set HostName $COMPUTER_NAME
@@ -62,37 +31,6 @@ if [[ $response =~ ^([yY][eE][sS]|[yY])$ ]]; then
   sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string $COMPUTER_NAME
 fi
 
-echo ""
-echo "Signed into the app store??  (y/n)"
-read -r appstore_response
-
-installer() {
-	cat $1 | while read line
-	do
-		if [[ $line != \#* ]]
-		then
-			$2 install $line;
-		fi
-	done
-}
-
-installer brewCask 'brew cask'
-installer brew brew
-installer pip pip
-
-if [[ $appstore_response =~ ^([yY][eE][sS]|[yY])$ && "$(mas account)" -eq 0 ]]; then
-	cat mas | while read line
-	do
-		if [[ $line != \#* ]]
-		then
-			app="$(mas search "$line" | awk NR==1'{ print $1 }')"
-			mas install $app
-		fi
-	done
-fi
-
-#configure fzf
-yes "y" | $(brew --prefix)/opt/fzf/install
 
 # Disable the sound effects on boot
 sudo nvram SystemAudioVolume=" "
@@ -580,25 +518,3 @@ defaults write org.m0k.transmission BlocklistAutoUpdate -bool true
 
 # Randomize port on launch
 defaults write org.m0k.transmission RandomPort -bool true
-
-###############################################################################
-# Cleanup                                                         #
-###############################################################################
-
-# set new bash as the default
-sudo echo '/usr/local/bin/bash' >> /etc/shells
-chsh -s /usr/local/bin/bash
-
-
-# Disable Gatekeeper
-sudo spctl --master-disable
-
-# Wipe the Dock
-if [[ $dock_response =~ ^([yY][eE][sS]|[yY])$ ]]; then
-	dockutil --remove all
-fi
-
-# do this last bc it blockblocks things
-brew cask install blockblock
-
-echo "Done. Note that some of these changes require a logout/restart to take effect."
