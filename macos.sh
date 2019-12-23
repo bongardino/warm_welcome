@@ -105,6 +105,9 @@ defaults write com.apple.screencapture type -string "png"
 echo "Finder"                                                                      #
 ###############################################################################
 
+# dark mode
+defaults write -g AppleInterfaceStyle Dark
+
 # Show icons for hard drives, servers, and removable media on the desktop
 defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool true
 defaults write com.apple.finder ShowHardDrivesOnDesktop -bool true
