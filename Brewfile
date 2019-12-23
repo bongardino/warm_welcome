@@ -69,5 +69,3 @@ if system('mas account')
   mas "Remote Desktop", id: 409907375
   mas "Tweetbot", id: 1384080005
 end
-
-cask "blockblock"
