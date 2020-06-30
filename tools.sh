@@ -20,7 +20,7 @@ cat <<EOM > "$HOME"/.ssh/config
 Host *
  AddKeysToAgent yes
  UseKeychain yes
- IdentityFile "$HOME"/.ssh/id_rsa
+ IdentityFile $HOME/.ssh/id_rsa
 EOM
 
 clear_previous_line

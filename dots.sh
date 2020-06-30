@@ -1,7 +1,7 @@
 #!/bin/bash
 # this is terrible and not safe dont use it I was up late
 
-# set -x
+set -x
 
 backup_dir="$HOME"/Desktop/dot-backup
 git_dir="$HOME"/src/dotfiles
@@ -10,20 +10,41 @@ function dot-git {
    /usr/bin/git --git-dir="$git_dir" --work-tree="$HOME" "$@"
 }
 
+function cleanup {
+  if [[ -e "out" ]]; then
+    rm out
+  fi
+
+  if [[ -e "dots" ]]; then
+    rm dots
+  fi
+}
+
 mkdir -p "$backup_dir"
 
-# git init --bare "$git_dir"
+cleanup
+
+curl -sLJ https://raw.githubusercontent.com/bongardino/dotfiles/master/.gitignore -o out
+
+cat out | while read line; do
+  if [[ "$line" =~ .*"!".* ]]; then
+    echo $line | cut -c2- >> dots
+  fi
+done
+
+cat dots | while read dot; do
+  if [[ -e "$HOME/$dot" ]]; then
+    mv $HOME/$dot $backup_dir || true
+  fi
+done
+
 git clone --bare https://github.com/bongardino/dotfiles.git "$git_dir"
 dot-git checkout
 
 if [ $? = 0 ]; then
-  echo "Checked out dots.";
-  else
-    echo "Backing up pre-existing dots and retrying ...";
-    dot-git checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I {} mv $HOME/{} $backup_dir
-    mv $git_dir $backup_dir || true
-	git clone --bare https://github.com/bongardino/dotfiles.git "$git_dir"
-    dot-git checkout
-fi;
+  echo "Checked out dots."
+fi
 
 dot-git config status.showUntrackedFiles no
+
+cleanup

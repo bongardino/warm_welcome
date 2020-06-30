@@ -6,3 +6,4 @@ source ./helpers.sh
 ./macos.sh
 ./new_bash
 ./cleanup.sh
+./dots.sh
