@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 
-echo '/usr/local/bin/bash' >> /etc/shells
+echo '/opt/homebrew/bin/bash' >> /etc/shells
 
-chsh -s /usr/local/bin/bash
+chsh -s /opt/homebrew/bin/bash
